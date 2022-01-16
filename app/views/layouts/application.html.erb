@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TestApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%# This was commented out to fix a compile error on Cloud9 <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%# Not entirely sure what the above code was for, but it's related to /test_app/app/javascript/packs/application.js %>
+    
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>
