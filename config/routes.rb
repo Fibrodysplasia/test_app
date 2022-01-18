@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   #so it is really 'pages_controller#home'. The #hello tells it to find the 'home' method
   #(also called an action in this context) that is defined inside pages_controller.
   root 'pages#home'
+  get 'about', to: 'pages#about'
 end
