@@ -10,12 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-
 ActiveRecord::Schema.define(version: 2022_01_18_024318) do
-#Ran a migration and schema didn't update?
-#Run this code: rake db:drop db:create db:migrate
-#Google 'schema dumping and you' lol
+
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "description"
