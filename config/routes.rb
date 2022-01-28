@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # (also called an action in this context) that is defined inside pages_controller.
   root 'pages#home'
   get 'about', to: 'pages#about'
-  resources :articles, only: %i[show index new create]
+  resources :articles, only: %i[show index new create edit update]
   # this gives us the routes for articles
   # can also do resources :some, only: [:show, :edit, :etc]
 end

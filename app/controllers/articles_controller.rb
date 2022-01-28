@@ -16,6 +16,10 @@ class ArticlesController < ApplicationController
         # thus throw me an error message
     end
     
+    def edit
+        @article = Article.find(params[:id])
+    end
+    
     def create
         # using instance so i can access it outside in a bit
         @article = Article.new(params.require(:article).permit(:title, :description))
@@ -33,10 +37,10 @@ class ArticlesController < ApplicationController
             flash[:notice] = "Article was created successfully."
         # here, using rails routes --expanded to see routes
         # there is prefix = article, so append "_path"
-        # and the pattern is article/:id so,
+        # and the pattern is articles/:id so,
         # path is article_path(@article) and rails will extract the :id
         # from the @article to use in the path
-        # redirect_to  article_path(@article)
+        # redirect_to article_path(@article)
         
         # turns out, you can just shorten the above to
             redirect_to @article #thanks rails
@@ -45,4 +49,13 @@ class ArticlesController < ApplicationController
         end
     end
     
+    def update
+        @article = Article.find(params[:id]) 
+        if @article.update(params.require(:article).permit(:title, :description))
+            flash[:notice] = "Article successfully updated."
+            redirect_to @article
+        else 
+            render 'edit'
+       end
+    end
 end
