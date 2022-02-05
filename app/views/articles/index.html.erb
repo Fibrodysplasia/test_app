@@ -5,7 +5,7 @@
         <tr>
             <th>Title</th>
             <th>Description</th>
-            <th>Actions</th>
+            <th colspan="3">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -13,8 +13,25 @@
             <tr>
                 <td><%= article.title %></td>
                 <td><%= article.description %></td>
-                <td>Placeholder</td>
+                <td><%= link_to 'Show', article_path(article) %></td>
+                <td><%= link_to 'Edit', edit_article_path(article) %></td>
+                
+                <%# here the article i'm iterating over is passed in, 
+                and rails is smart enough to know I need the id. Thanks rails.
+                
+                In Rails 7 the rails-ujs library was dropped and replaced with
+                turbo-rails. So now the link_to destroy always slaps in a GET
+                request no matter the specified method. 
+                
+                but i'm using rails 6? what is happening here?
+                confirmation also isn't working
+                
+                So instead of link_to we will use button_to for now
+                But I wouldn't usually mix link and buttons cuz ugly %>
+                
+                <td><%= button_to 'Destroy', article_path(article), method: :delete, data: { confirm: "Are you sure?" } %></td>
             </tr>
         <% end %>
     </tbody>
 </table>
+<p><%= link_to 'Create New Article', new_article_path %></p>

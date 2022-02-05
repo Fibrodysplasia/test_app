@@ -12,9 +12,8 @@
   </head>
 
   <body>
-    <% flash.each do |name, msg| %>
-      <%= msg %>
-    <% end %>
+    <%# rails knows the 'messages' partial is _messages.html.erb because of naming conventions%>
+    <%= render 'layouts/messages' %>
     <%= yield %>
   </body>
 </html>

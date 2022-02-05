@@ -3,17 +3,10 @@
 <%# remember you can see the messages with article.errors.full_messages
     after trying to save an article object that doesn't pass validation %>
     
-<% if @article.errors.any? %>
-    <h2>The following error(s) prevented the article from being saved:</h2>
-    <ul>
-        <% @article.errors.full_messages.each do |m| %>
-            <li><%= m %></li>
-        <% end %>
-    </ul>
-    
-<% end %>
 
-<%# note that form_with generally submits remotely with ajax,
+<%# I moved this code into 'form' partial, but:
+
+    note that form_with generally submits remotely with ajax,
     so I am modifying form_with to submit with HTTP POST request instead.
     Here, the scope is given a symbol (:symbol) and the url, and then
     local: true for HTTP (form_with only, if using form_for the default
@@ -32,3 +25,4 @@
         <%= f.submit %>
     </p>
 <% end %>
+<p><%= link_to 'Return to articles listing', articles_path  %></p>

@@ -7,7 +7,16 @@ Rails.application.routes.draw do
   # (also called an action in this context) that is defined inside pages_controller.
   root 'pages#home'
   get 'about', to: 'pages#about'
-  resources :articles, only: %i[show index new create edit update]
+  #resources :articles, only: %i[show index new create edit update destroy]
   # this gives us the routes for articles
-  # can also do resources :some, only: [:show, :edit, :etc]
+  # can also do resources :some, only: [:show, :edit, :etc] so I only see what
+  # I'm working on
+  
+  
+  # after having made all of the things i can expose the routes like this:
+  resources :articles
+  
+  # REST is a representational state transfer -- so a mapping of HTTP verbs
+  # (get, post, put/patch, delete) to CRUD actions. 
+  # using 'resources', rails provides the RESTful routes for us behind the scenes
 end

@@ -1,8 +1,9 @@
 class ArticlesController < ApplicationController
+    #here i will use the before_action to set_article rather than
+    #call the code each time one of the methods is called
+    before_action :set_article, only: [:show, :edit, :update, :destroy]
     
     def show
-        #the @ is how we create an instance variable
-        @article = Article.find(params[:id])
     end
     
     def index #needs an index.html.erb
@@ -17,12 +18,11 @@ class ArticlesController < ApplicationController
     end
     
     def edit
-        @article = Article.find(params[:id])
     end
     
     def create
         # using instance so i can access it outside in a bit
-        @article = Article.new(params.require(:article).permit(:title, :description))
+        @article = Article.new(article_params)
         # I need to whitelist params
         # using strong params
         
@@ -49,13 +49,28 @@ class ArticlesController < ApplicationController
         end
     end
     
-    def update
-        @article = Article.find(params[:id]) 
-        if @article.update(params.require(:article).permit(:title, :description))
+    def update 
+        if @article.update(article_params)
             flash[:notice] = "Article successfully updated."
             redirect_to @article
         else 
             render 'edit'
-       end
+        end
     end
+    
+    def destroy
+        @article.destroy
+        redirect_to articles_path
+    end
+    
+    private #you do not need an 'end' for private, it's not a block
+    
+    def set_article
+        @article = Article.find(params[:id]) 
+    end
+    
+    def article_params
+        params.require(:article).permit(:title, :description)
+    end
+    
 end
