@@ -7,7 +7,10 @@ ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
+# jquery doesn't come with rails 6?
+gem 'jquery-rails'
 
+gem 'bootstrap', '~> 5.0.2'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
