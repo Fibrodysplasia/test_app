@@ -9,15 +9,21 @@
 <% end %>
 
 <%= form_with(model: @article, local: true) do |f| %>
-    <p>
+<div class="container overflow-hidden mt-5">
+  <div class="card" style="width: 18rem;">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">        
         <%= f.label :title %><br>
         <%= f.text_field :title %>
-    </p>
-    <p>
+      </li>
+      <li class="list-group-item">
         <%= f.label :description %><br>
         <%= f.text_area :description %>
-    </p>
-    <p>
-        <%= f.submit %>
-    </p>
+      </li>
+    </ul>
+    <div class="card-footer">
+      <%= f.submit %>
+    </div>
+  </div>
+</div>
 <% end %>
