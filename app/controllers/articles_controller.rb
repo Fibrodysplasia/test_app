@@ -24,7 +24,9 @@ class ArticlesController < ApplicationController
         # using instance so i can access it outside in a bit
         @article = Article.new(article_params)
         # I need to whitelist params
-        # using strong params
+        
+        #the following is temporary until authentication is added
+        @article.user = User.first
         
         # need to see the object created? Do this
         # render plain: @article.inspect
@@ -35,6 +37,8 @@ class ArticlesController < ApplicationController
         # works like a hash. The two common keys are :notice and :alert
         # :alert is generally used when something goes wrong. 
             flash[:notice] = "Article was created successfully."
+            
+            
         # here, using rails routes --expanded to see routes
         # there is prefix = article, so append "_path"
         # and the pattern is articles/:id so,
