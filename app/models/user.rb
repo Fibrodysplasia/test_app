@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  #this 'self' is referencing any object of the User class
+  #this keeps the emails lowercase when saved to db
+  before_save { self.email = email.downcase }
   has_many :articles
   validates :username, presence: true, 
                       uniqueness: { case_sensitive: false }, 
