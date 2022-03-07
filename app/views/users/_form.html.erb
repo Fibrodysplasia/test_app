@@ -1,0 +1,37 @@
+<%# TODO: Create a shared errors folder and partial
+          change to obj.errors.any? in partial
+          render 'shared/errors', obj: @article or obj: @user for errors%>
+
+<% if @user.errors.any? %>
+    <h2>The following error(s) prevented the user from being created:</h2>
+    <ul>
+        <% @user.errors.full_messages.each do |m| %>
+            <li><%= m %></li>
+        <% end %>
+    </ul>
+    
+<% end %>
+
+<%# TODO: Style form %>
+<%= form_with(model: @user, local: true) do |f| %>
+  <div class="card align-items-center shadow" style="width: 18rem;">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">        
+        <%= f.label :username %><br>
+        <%= f.text_field :username %>
+      </li>
+      <li class="list-group-item">
+        <%= f.label :email %><br>
+        <%= f.email_field :email %>
+      </li>
+      <li class="list-group-item">
+        <%= f.label :password %><br>
+        <%= f.password_field :password %>
+      </li>
+    </ul>
+    <div class="w-100 card-footer d-flex flex-nowrap justify-content-evenly">
+      <%= f.submit "Sign up", :class => "btn btn-outline-success" %>
+      <%= link_to 'Cancel', articles_path, :class => "btn btn-outline-danger"  %>
+    </div>
+  </div>
+<% end %>

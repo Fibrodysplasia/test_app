@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   # REST is a representational state transfer -- so a mapping of HTTP verbs
   # (get, post, put/patch, delete) to CRUD actions. 
   # using 'resources', rails provides the RESTful routes for us behind the scenes
+  get 'signup', to: 'users#new'
+  resources :users, except: [:new]
 end
