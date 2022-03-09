@@ -30,7 +30,7 @@
       </li>
     </ul>
     <div class="w-100 card-footer d-flex flex-nowrap justify-content-evenly">
-      <%= f.submit "Sign up", :class => "btn btn-outline-success" %>
+      <%= f.submit(@user.new_record? ? "Sign up" : "Update", :class => "btn btn-outline-success") %>
       <%= link_to 'Cancel', articles_path, :class => "btn btn-outline-danger"  %>
     </div>
   </div>
