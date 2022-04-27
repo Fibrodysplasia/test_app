@@ -2,4 +2,9 @@
 
 <h1 class="mb-5 text-center"><%= @user.username %></h1>
 
+<%= gravatar_for @user, size: 200 %>
+
+<h3 class="my-5 text-center">Articles</h3>
+<%= render 'articles/article' %>
+
 </div>
