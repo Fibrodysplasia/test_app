@@ -4,7 +4,24 @@
 
 <%= gravatar_for @user, size: 200 %>
 
-<h3 class="my-5 text-center">Articles</h3>
+<%= link_to "Edit Your Profile", edit_user_path(@user),class: "mt-3 btn btn-outline-success" %>
+
+<h3 class="mt-5 text-center">Articles</h3>
+
+<div class="container d-flex flex-column align-items-center">
+  <div class="page_info">
+    <%= page_entries_info @articles %>
+  </div>
+  <%= will_paginate @articles, :container => false %>
+</div>
+
 <%= render 'articles/article' %>
+
+<div class="container d-flex flex-column align-items-center">
+  <div class="page_info">
+    <%= page_entries_info @articles %>
+  </div>
+  <%= will_paginate @articles, :container => false %>
+</div>
 
 </div>

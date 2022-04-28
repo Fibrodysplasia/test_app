@@ -1,4 +1,19 @@
-<div class="container d-flex flex-column overflow-hidden my-5">
+<div class="container d-flex flex-column overflow-hidden my-5 align-items-center">
   <h1 class="text-center">Blog Articles</h1>
+  
+  <div class="container apple_pagination d-flex flex-column align-items-center">
+    <div class="page_info">
+      <%= page_entries_info @articles %>
+    </div>
+    <%= will_paginate @articles, :container => false %>
+  </div>
+  
   <%= render 'article' %>
+  
+  <div class="container d-flex flex-column align-items-center">
+    <div class="page_info">
+      <%= page_entries_info @articles %>
+    </div>
+    <%= will_paginate @articles, :container => false %>
+  </div>
 </div>
