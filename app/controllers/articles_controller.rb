@@ -36,11 +36,11 @@ class ArticlesController < ApplicationController
         # here the flash helper can be assigned a message that essentially
         # works like a hash. The two common keys are :notice and :alert
         # :alert is generally used when something goes wrong. 
-            flash[:notice] = "Article was created successfully."
+            flash[:notice] = 'Article was created successfully.'
             
             
         # here, using rails routes --expanded to see routes
-        # there is prefix = article, so append "_path"
+        # there is prefix = article, so append '_path'
         # and the pattern is articles/:id so,
         # path is article_path(@article) and rails will extract the :id
         # from the @article to use in the path
@@ -55,7 +55,7 @@ class ArticlesController < ApplicationController
     
     def update 
         if @article.update(article_params)
-            flash[:notice] = "Article successfully updated."
+            flash[:notice] = 'Article successfully updated.'
             redirect_to @article
         else 
             render 'edit'
