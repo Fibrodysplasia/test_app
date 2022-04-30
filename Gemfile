@@ -25,7 +25,10 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+# easier pagination than bootstrap's solution
 gem 'will_paginate-bootstrap-style'
+# not included by default after Ruby 3.0 so I added it
+gem 'rexml', require: false
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

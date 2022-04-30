@@ -23,7 +23,9 @@
         </div>
         <div class="card-footer">
           <%= link_to "View Profile", user, class: "btn btn-outline-success" %>
+          <% if logged_in? && user == current_user %>
           <%= link_to "Edit Profile", edit_user_path(user), class: "btn btn-outline-primary" %>
+          <% end %>
         </div>
     </div>
   <% end %>

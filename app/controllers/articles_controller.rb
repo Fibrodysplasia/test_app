@@ -2,6 +2,8 @@ class ArticlesController < ApplicationController
     #here i will use the before_action to set_article rather than
     #call the code each time one of the methods is called
     before_action :set_article, only: [:show, :edit, :update, :destroy]
+    before_action :require_user, except: [:index, :show]
+    before_action :require_same_user, only: [:edit, :update, :destroy]
     
     def show
     end
@@ -24,9 +26,8 @@ class ArticlesController < ApplicationController
         # using instance so i can access it outside in a bit
         @article = Article.new(article_params)
         # I need to whitelist params
-        
-        #the following is temporary until authentication is added
-        @article.user = User.first
+      
+        @article.user = current_user
         
         # need to see the object created? Do this
         # render plain: @article.inspect
@@ -77,4 +78,10 @@ class ArticlesController < ApplicationController
         params.require(:article).permit(:title, :description)
     end
     
+    def require_same_user
+      if current_user != @article.user
+        flash[:alert] = "You can only edit or delete your own articles."
+        redirect_to @article
+      end
+    end
 end
