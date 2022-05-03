@@ -1,0 +1,30 @@
+<div class="w-100 d-flex flex-column align-items-center my-5">
+
+<h1 class="mb-5 text-center">Create Category</h1>
+
+  <% if @category.errors.any? %>
+    <h2>The following error(s) prevented the category from being created:</h2>
+    <ul>
+        <% @category.errors.full_messages.each do |m| %>
+            <li><%= m %></li>
+        <% end %>
+    </ul>
+      
+  <% end %>
+  
+  <%# TODO: Style form %>
+  <%= form_with(model: @category, local: true) do |f| %>
+    <div class="card align-items-center shadow" style="width: 18rem;">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">        
+          <%= f.label :name %><br>
+          <%= f.text_field :name %>
+        </li>
+      </ul>
+      <div class="w-100 card-footer d-flex flex-nowrap justify-content-evenly">
+        <%= f.submit :class => "btn btn-outline-success" %>
+        <%= link_to 'Cancel', articles_path, :class => "btn btn-outline-danger"  %>
+      </div>
+    </div>
+  <% end %>
+</div>
