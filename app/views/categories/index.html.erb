@@ -1,0 +1,26 @@
+<div class='container d-flex flex-column overflow-hidden my-5 align-items-center'>
+  <h1 class='text-center'>Categories</h1>
+  
+  <div class='container d-flex flex-column align-items-center'>
+    <div class='page_info'>
+      <%= page_entries_info @categories %>
+    </div>
+    <%= will_paginate @categories, :container => false %>
+  </div>
+  
+  <% @categories.each do |category| %>
+    <div class='card text-center align-self-center w-50 my-3 shadow p-3'>
+        <div class='card-body'>
+          <p class='card-text'><%= link_to category.name, category_path(category), :class => 'btn btn-outline-success' %></p>
+          <p class='card-text'><%= pluralize(category.articles.count, "article") %></p>
+        </div>
+    </div>
+  <% end %>
+  
+  <div class='container d-flex flex-column align-items-center'>
+    <div class='page_info'>
+      <%= page_entries_info @categories %>
+    </div>
+    <%= will_paginate @categories, :container => false %>
+  </div>
+</div>

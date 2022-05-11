@@ -2,6 +2,9 @@
 
 class Article < ApplicationRecord
   belongs_to :user
+  has_many :article_categories
+  has_many :categories, through: :article_categories
+  
   # make sure the following fields are present
   # for an article to be saved
   # google ActiveRecord validations for more

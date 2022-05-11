@@ -11,7 +11,7 @@
 <%# TODO: Style form %>
 <%= form_with(model: @article, local: true) do |f| %>
   <div class="card align-items-center shadow" style="width: 18rem;">
-    <ul class="list-group list-group-flush">
+    <ul class="w-100 list-group list-group-flush">
       <li class="list-group-item">        
         <%= f.label :title %><br>
         <%= f.text_field :title %>
@@ -20,6 +20,11 @@
         <%= f.label :description %><br>
         <%= f.text_area :description %>
       </li>
+      
+      <h5 class="text-center">Categories:</h2>
+      <div class="form-check">
+        <%= f.collection_select(:category_ids, Category.all, :id, :name, { prompt: "Select Categories:"}, { multiple: true, size: 3, class: "w-100 custom-select" }) %>
+      </div>
     </ul>
     <div class="w-100 card-footer d-flex flex-nowrap justify-content-evenly">
       <%= f.submit 'Create Blog Post', :class => "btn btn-outline-success" %>
